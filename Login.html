@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGIN — KENANGAN IXD</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#0a0f1a;
+      --muted:#9aa4c7;
+      --text:#e8ecff;
+      --primary:#9b5cff;
+      --secondary:#00d4ff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body {
+      font-family:Poppins, sans-serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0a0f1a;
+      padding:20px;
+    }
+    .card {
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius:18px;
+      padding:22px 20px;
+      width:100%;
+      max-width:340px;
+      text-align:center;
+      box-shadow:0 0 20px rgba(155,92,255,.3);
+    }
+    .logo {
+      width:70px;height:70px;border-radius:50%;
+      margin:0 auto 14px;
+      box-shadow:0 0 16px var(--primary);
+    }
+    .title {
+      font-size:22px;
+      font-family:Orbitron, sans-serif;
+      font-weight:800;
+      color:var(--primary);
+      margin-bottom:4px;
+    }
+    .subtitle {
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+    .form-group {
+      position:relative;margin-bottom:14px;
+    }
+    .form-group i {
+      position:absolute;left:12px;top:50%;
+      transform:translateY(-50%);
+      color:var(--secondary);
+      font-size:13px;
+    }
+    input{
+      width:100%;
+      padding:12px 12px 12px 36px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(7,10,20,.6);
+      color:var(--text);
+      font-size:13px;
+      outline:none;
+    }
+    button {
+      width:100%;
+      padding:12px;
+      font-size:14px;
+      font-weight:600;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      background:linear-gradient(90deg, var(--primary), var(--secondary));
+      color:white;
+    }
+    .footer {
+      margin-top:20px;font-size:10px;color:var(--muted);
+    }
+    .toast {
+      position:fixed;
+      bottom:30px;
+      left:50%;
+      transform:translateX(-50%);
+      background: var(--primary);
+      color:white;
+      padding:10px 16px;
+      border-radius:8px;
+      font-size:12px;
+      font-weight:500;
+      opacity:0;
+      animation: fadeInOut 3.8s ease forwards;
+    }
+    @keyframes fadeInOut {
+      0%{opacity:0;transform:translate(-50%,20px);}
+      10%{opacity:1;transform:translate(-50%,0);}
+      90%{opacity:1;}
+      100%{opacity:0;transform:translate(-50%,20px);}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="https://image2url.com/images/1764489994763-8fdb7262-ad8e-4c8a-b618-9a0fa84f8604.jpg" class="logo" />
+
+    <div class="title">KENANGAN IXD</div>
+    <div class="subtitle">Login untuk melanjutkan</div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="user" placeholder="Username" required />
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-key"></i>
+        <input type="password" id="pass" placeholder="Password" required />
+      </div>
+
+      <button type="submit"><i class="fas fa-right-to-bracket"></i> LOGIN</button>
+    </form>
+
+    <div class="footer">© 2025 IXD Project</div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none;"></div>
+
+  <script>
+    const correctUser = "admin9d";
+    const correctPass = "admin123";
+
+    const form = document.getElementById("loginForm");
+    const toast = document.getElementById("toast");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const u = document.getElementById("user").value;
+      const p = document.getElementById("pass").value;
+
+      if(u === correctUser && p === correctPass){
+        window.location.href = "dashboard.html"; // ganti tujuan jika mau
+      } else {
+        toast.textContent = "Username atau Password salah!";
+        toast.style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>
